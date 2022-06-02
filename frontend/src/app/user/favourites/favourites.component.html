@@ -1,0 +1,12 @@
+<section class="container-fluid">
+  <h2 class="section-header">My Favourites</h2>
+  <div class="row display-section movies">
+    <div class="card" name="movie" class="card thumb col-sm-auto" *ngFor="let movie of list"
+      (click)="getMovieDetails(movie.title)">
+      <img [src]="movie.imageUrl" class="card-img-top" [alt]="movie.title">
+      <p class="card-text">{{movie.title}}</p>
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+</section>

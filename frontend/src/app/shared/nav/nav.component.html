@@ -1,0 +1,136 @@
+<section class="norm-nav">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" [routerLink]="['/home']">NETFLUX</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="openNav()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home <span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item github">
+          <a class="nav-link" href="https://github.com/olivermirimu/Netflux-mini-netflix-web-app-ALC" target="_blank">
+            Github Repo</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" routerLinkActive="active">
+            Genres
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a *ngFor="let genre of genres" name="genre" class="dropdown-item"
+              [routerLink]="['/movies/genre', genre]">{{genre}}</a>
+          </div>
+        </li>
+        <!-- <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>-->
+      </ul>
+      <form class="form-inline my-2 my-lg-0 " (ngSubmit)="searchMovie(searchTerm)">
+        <div class="searchForm">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchTerm"
+            [(ngModel)]="searchTerm" />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </div>
+      </form>
+      <div class="nav-item user">
+        <li *ngIf="!isAuthenticated"><a class="nav-item btn btn-primary" [routerLink]="['/log-in']">Log
+            In</a>
+        </li>
+        <li *ngIf="isAuthenticated" class="nav-item nav-link dropdown">
+          <a class="nav-link  username dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" routerLinkActive="active">
+            Hello {{loggedInUser.firstName}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/profile']">Edit Profile</a>
+            <a class="dropdown-item" href="#">Change Plan</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" (click)="logOut()">Sign Out</a>
+          </div>
+        </li>
+      </div>
+    </div>
+  </nav>
+</section>
+<section class="app-nav hidden">
+  <header>
+    <div id="mySidenav" class="sidenav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home <span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item github">
+          <a class="nav-link" href="https://github.com/olivermirimu/Netflux-mini-netflix-web-app-ALC" target="_blank">
+            Github Repo</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" routerLinkActive="active">
+            Genres
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a *ngFor="let genre of genres" name="genre" class="dropdown-item"
+              [routerLink]="['/movies/genre', genre]">{{genre}}</a>
+          </div>
+        </li>
+        <!-- <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>-->
+      </ul>
+    </div>
+
+    <!-- Use any element to open the sidenav -->
+    <div class="mini-nav">
+      <span class="hum-menu" (click)="openNav()">
+        <svg viewBox="0 0 32 32" class="svg-icon">
+          <path
+            d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z" />
+        </svg>
+      </span>
+      <div class="search">
+        <form class="inline-form">
+          <input class="form-control" type="text" placeholder="Search">
+          <button class="search-btn btn">
+            <svg viewBox="0 0 26 28" style="height: 1.2em; width:1.2em;" class="search-icon svg-icon">
+              <path
+                d="M18 13c0-3.859-3.141-7-7-7s-7 3.141-7 7 3.141 7 7 7 7-3.141 7-7zm8 13c0 1.094-.906 2-2 2a1.96 1.96 0 01-1.406-.594l-5.359-5.344a10.971 10.971 0 01-6.234 1.937c-6.078 0-11-4.922-11-11s4.922-11 11-11 11 4.922 11 11c0 2.219-.672 4.406-1.937 6.234l5.359 5.359c.359.359.578.875.578 1.406z">
+              </path>
+            </svg>
+          </button>
+        </form>
+
+      </div>
+      <div class="user-actions">
+        <svg class="svg-icon" viewBox="0 0 20 20">
+          <path fill="none"
+            d="M12.443,9.672c0.203-0.496,0.329-1.052,0.329-1.652c0-1.969-1.241-3.565-2.772-3.565S7.228,6.051,7.228,8.02c0,0.599,0.126,1.156,0.33,1.652c-1.379,0.555-2.31,1.553-2.31,2.704c0,1.75,2.128,3.169,4.753,3.169c2.624,0,4.753-1.419,4.753-3.169C14.753,11.225,13.821,10.227,12.443,9.672z M10,5.247c1.094,0,1.98,1.242,1.98,2.773c0,1.531-0.887,2.772-1.98,2.772S8.02,9.551,8.02,8.02C8.02,6.489,8.906,5.247,10,5.247z M10,14.753c-2.187,0-3.96-1.063-3.96-2.377c0-0.854,0.757-1.596,1.885-2.015c0.508,0.745,1.245,1.224,2.076,1.224s1.567-0.479,2.076-1.224c1.127,0.418,1.885,1.162,1.885,2.015C13.961,13.689,12.188,14.753,10,14.753z M10,0.891c-5.031,0-9.109,4.079-9.109,9.109c0,5.031,4.079,9.109,9.109,9.109c5.031,0,9.109-4.078,9.109-9.109C19.109,4.969,15.031,0.891,10,0.891z M10,18.317c-4.593,0-8.317-3.725-8.317-8.317c0-4.593,3.724-8.317,8.317-8.317c4.593,0,8.317,3.724,8.317,8.317C18.317,14.593,14.593,18.317,10,18.317z">
+          </path>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+
+    /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+  </script>
+
+</section>

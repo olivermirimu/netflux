@@ -1,0 +1,52 @@
+section {
+  padding-bottom: 20px;
+}
+
+.coverImage {
+  max-height: 560px;
+}
+
+.welcomeBtn {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.benefits {
+  max-height: auto;
+  margin: 0.5em 0.5em;
+  padding: 0.5em;
+}
+
+.niche-image {
+  width: 11em;
+  height: 10em;
+  border-radius: 50%;
+}
+
+.niche-specific {
+  max-width: 12rem;
+  text-align: center;
+  margin: 0.5em;
+  width: 18rem;
+}
+
+.niche-text {
+  padding: 5px 0;
+}
+
+.welcomeBtn button {
+  margin: 0 5px;
+}
+
+@media(max-width: 580px) {
+  .niche-single {
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .benefits {
+    display: inline-block;
+    padding: 2px;
+  }
+}

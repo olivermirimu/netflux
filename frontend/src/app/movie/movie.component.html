@@ -1,0 +1,26 @@
+<netflux-nav></netflux-nav>
+<section class="container-fluid cover">
+  <div class="card mb-3">
+    <img [src]="movieTitle.cover" class="card-img-top cover-image" alt="...">
+    <hr>
+    <h5 class="card-title">{{movieTitle.title}}</h5>
+    <div class="card-body movie container-fluid row">
+      <div><img [src]="movieTitle.imageUrl" class="col-md" /></div>
+      <div class="container details col-md">
+        <p class="card-text">Details</p>
+        <p>releaseYear: {{movieTitle.releaseYear}}</p>
+        <p>duration: {{movieTitle.duration}}</p>
+        <p>rating: {{movieTitle.rating}}</p>
+        <p>genre: {{movieTitle.genre}}</p>
+      </div>
+      <div class="container-fluid row actors">
+        <!-- <div *ngFor="let actor of movieTitle.actors"></div> -->
+        <!-- {{movieTitle.actors | json}} -->
+      </div>
+      <div class="options">
+        <button class="button btn btn-primary" (click)="addToFavorites(movieTitle.title)">Add To Favourites</button>
+      </div>
+    </div>
+  </div>
+</section>
+<netflux-footer></netflux-footer>

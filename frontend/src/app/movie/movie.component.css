@@ -1,0 +1,28 @@
+* {
+  color: black;
+}
+
+.movieDetails>div {
+  display: inline-block;
+}
+
+.card-text {
+  font-weight: 600;
+  padding: 2px 0;
+}
+
+.details {
+  float: left;
+  margin: auto auto 5px 10px;
+  padding-top: 20px;
+  position: relative;
+  bottom: 10px;
+}
+
+.cover-image {
+  max-height: 28em;
+}
+
+.options{
+  padding: 5px;
+}

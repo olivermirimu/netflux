@@ -1,0 +1,86 @@
+<section class="signUp">
+  <div class="header bg-primary section-header">
+    <!-- TODO: add back svg button and map it to back functionality -->
+    <!-- <button class="btn">
+      <svg class="back-icon" id="left" className="svg-icon" viewBox="0 0 20 20">
+        <path
+          d="M11.739,13.962c-0.087,0.086-0.199,0.131-0.312,0.131c-0.112,0-0.226-0.045-0.312-0.131l-3.738-3.736c-0.173-0.173-0.173-0.454,0-0.626l3.559-3.562c0.173-0.175,0.454-0.173,0.626,0c0.173,0.172,0.173,0.451,0,0.624l-3.248,3.25l3.425,3.426C11.911,13.511,11.911,13.789,11.739,13.962 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.148,3.374,7.521,7.521,7.521C14.147,17.521,17.521,14.148,17.521,10">
+        </path>
+      </svg>
+    </button> -->
+    <h1 class="">Edit Profile</h1>
+  </div>
+  <form #profileForm="ngForm" class="container-fluid">
+    <div class="edit"><button class="changePassword btn btn-secondary" type="" (click)="editProfile()">Edit
+        Profile</button></div>
+    <div class="form-row col-md-auto name form-group">
+      <div class="nameGroup col-sm-auto">
+        <label for="firstName">First name</label>
+        <input type="text" class="form-control " id="firstName" name="firstName" placeholder="First name" required
+          [(ngModel)]="currentUser.firstName" #firstName="ngModel"
+          [ngClass]="{'is-invalid': profileForm.controls.firstName?.invalid && profileForm.controls.firstName?.touched }" />
+        <div *ngIf="profileForm.controls.firstName?.invalid && profileForm.controls.firstName?.touched"
+          class="alert alert-danger">
+          Please fill in appropriately
+        </div>
+      </div>
+      <div class="nameGroup col-sm-auto">
+        <label for="lastName">Last name</label>
+        <input type="text" class="form-control"
+          [ngClass]="{'is-invalid': profileForm.controls.lastName?.invalid && profileForm.controls.lastName?.touched }"
+          id="lastName" name="lastName" placeholder="Last name" value="" required [(ngModel)]="currentUser.lastName" />
+        <div *ngIf="profileForm.controls.lastName?.invalid && profileForm.controls.lastName?.touched"
+          class="alert alert-danger">
+          Please fill in appropriately
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-auto col-sm-4">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
+        [(ngModel)]="currentUser.email"
+        [ngClass]="{'is-invalid': profileForm.controls.email?.invalid && profileForm.controls.email?.touched }"
+        required />
+      <p *ngIf="profileForm.controls.email?.invalid && profileForm.controls.email?.touched" class="alert alert-danger">
+        Please fill in appropriately</p>
+    </div>
+    <div class="form-group">
+      <div class="passwords">
+        <div class="col-sm-4">
+          <label for="password">Current Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" name="password"
+            [(ngModel)]="currentUser.password" required>
+          <p *ngIf="profileForm.controls.password?.invalid && profileForm.controls.password?.touched"
+            class="alert alert-danger">
+            This field is required</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="newPasswords form-group" [hidden]="editProfile()">
+      <div class="form-group col-sm-4">
+        <label for="password">New Password</label>
+        <input type="password" class="form-control" id="newPassword" placeholder="New Password" name="newPassworrd"
+          required>
+        <p *ngIf="profileForm.controls.newPassword?.invalid && profileForm.controls.newPassword?.touched"
+          class="alert alert-danger">
+          This field is required</p>
+      </div>
+      <div class="form-group col-sm-4">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password"
+          name="confirmPassword" (change)="confirmPassword(confirmField)" [(ngModel)]="currentUser.confirmPassword"
+          #confirmField required>
+        <p *ngIf="profileForm.controls.confirmPassword?.invalid && profileForm.controls.confirmPassword?.touched"
+          class="alert alert-danger">
+          Does not match new password</p>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="saveChanges()">Save</button>
+    <button class="btn btn-primary" type="reset" [routerLink]="['/home']">Cancel</button>
+  </form>
+  <!-- {{profileForm.value | json}} -->
+  <hr>
+  <netflux-favourites></netflux-favourites>
+</section>

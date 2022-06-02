@@ -1,0 +1,19 @@
+.thumb {
+  max-height: auto;
+  max-width: 8.8rem;
+  margin: 0.5em;
+}
+
+.carousel-item img {
+  max-height: 560px;
+}
+
+.movies {
+  margin: 20px 0px;
+}
+
+.card-text {
+  padding: 2px;
+  text-align: center;
+  color: #2a2a2a;
+}

@@ -1,0 +1,15 @@
+.changePassword {
+  float: right;
+  margin-right: -1em;
+}
+
+.btn {
+  margin-right: 1em;
+}
+
+.back-icon {
+  fill: white;
+  stroke: white;
+  vertical-align: middle;
+  margin-bottom: -2px;
+}
